@@ -9,8 +9,8 @@ class HitungKarakterPage extends StatefulWidget {
 
 class _HitungKarakterPageState extends State<HitungKarakterPage> {
   bool isPressed = false;
-  final HitungKarakterController hitungKarakterController =
-      HitungKarakterController();
+  String hasil = "";
+  final HitungKarakterController hitungKarakterController = HitungKarakterController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +51,8 @@ class _HitungKarakterPageState extends State<HitungKarakterPage> {
               onPressed: () {
                 setState(() {
                   isPressed = true;
-                  hitungKarakterController.checkKarakter(
-                      hitungKarakterController.hitungKarakterC.text);
+                  hitungKarakterController.checkKarakter(hitungKarakterController.hitungKarakterC.text);
+                  hasil = hitungKarakterController.hasil;
                 });
               },
               style: TextButton.styleFrom(
@@ -96,7 +96,7 @@ class _HitungKarakterPageState extends State<HitungKarakterPage> {
                   ),
                   child: Center(
                     child: Text(
-                      'Panjang karakter: ${hitungKarakterController.hasil}',
+                      'Panjang karakter: $hasil',
                       style: TextStyle(
                         fontSize: 18.0,
                         color: Colors.black,

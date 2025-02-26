@@ -9,6 +9,7 @@ class AuthController {
   TextEditingController passwordController = TextEditingController();
   var userList = <UserModel>[];
   String username = '';
+  
   Future<void> login(BuildContext context) async {
     String username = usernameController.text.trim();
     String password = passwordController.text.trim();
@@ -47,7 +48,6 @@ class AuthController {
     showSnackbar(context, "Register Berhasil!", Colors.green);
     usernameController.clear();
     passwordController.clear();
-    
   }
 
   void showSnackbar(BuildContext context, String message, Color color) {
