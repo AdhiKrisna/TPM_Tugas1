@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tugas_1/controllers/ganjil_genap_controller.dart';
 
 class GanjilGenapPage extends StatefulWidget {
-  const  GanjilGenapPage({super.key});
+  const GanjilGenapPage({super.key});
   @override
   State<GanjilGenapPage> createState() => _GanjilGenapPageState();
 }
@@ -13,7 +13,6 @@ class _GanjilGenapPageState extends State<GanjilGenapPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -50,9 +49,10 @@ class _GanjilGenapPageState extends State<GanjilGenapPage> {
             SizedBox(height: 32.0),
             TextButton(
               onPressed: () {
-                setState(() { 
-                    isPressed = true;
-                    ganjilGenapController.checkGanjilGenap(ganjilGenapController.ganjilGenapC.text);
+                setState(() {
+                  isPressed = true;
+                  ganjilGenapController.checkGanjilGenap(
+                      ganjilGenapController.ganjilGenapC.text);
                 });
               },
               style: TextButton.styleFrom(
@@ -62,7 +62,7 @@ class _GanjilGenapPageState extends State<GanjilGenapPage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-               child: Text(
+              child: Text(
                 'Cek Ganjil/Genap',
                 style: TextStyle(
                   fontSize: 18.0,
@@ -73,7 +73,7 @@ class _GanjilGenapPageState extends State<GanjilGenapPage> {
             ),
             const SizedBox(height: 32),
             if (isPressed)
-              if(ganjilGenapController.ganjilGenapC.text.isEmpty)
+              if (ganjilGenapController.ganjilGenapC.text.isEmpty)
                 Text(
                   'Masukkan angka terlebih dahulu',
                   style: TextStyle(
@@ -83,14 +83,28 @@ class _GanjilGenapPageState extends State<GanjilGenapPage> {
                   ),
                 )
               else
-              Text(
-                '${ganjilGenapController.ganjilGenapC.text} adalah bilangan ${ganjilGenapController.hasil}',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.65,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '${ganjilGenapController.ganjilGenapC.text} adalah bilangan ${ganjilGenapController.hasil}',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
           ],
         ),
       ),

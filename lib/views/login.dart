@@ -10,6 +10,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   AuthController authC = AuthController();
+  bool isHide = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,10 @@ class _LoginPageState extends State<LoginPage> {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.blue,
+                prefixIcon: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide.none,
@@ -44,15 +49,31 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 32.0),
             TextField(
-              obscureText: true,
+              obscureText: isHide ? true : false,
               keyboardType: TextInputType.text,
               controller: authC.passwordController,
+              
               style: TextStyle(
                 fontSize: 18.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
               decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                ),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isHide = !isHide;
+                    });
+                  },
+                  icon: Icon(
+                    isHide ? Icons.visibility_off : Icons.visibility,
+                    color: Colors.white,
+                  ),
+                ),
                 filled: true,
                 fillColor: Colors.blue,
                 border: OutlineInputBorder(

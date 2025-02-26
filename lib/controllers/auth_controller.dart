@@ -12,13 +12,17 @@ class AuthController {
   Future<void> login(BuildContext context) async {
     String username = usernameController.text.trim();
     String password = passwordController.text.trim();
+    if(username == "" || password == ""){
+      showSnackbar(context, 'Username dan Password tidak boleh kosong', Colors.red);
+      return;
+    }
     UserModel? user = await _dbHelper.loginUser(username, password);
     username = usernameController.text;
     if (user != null) {
       showSnackbar(context, "Login Berhasil! Selamat Datang $username", Colors.green);
       Navigator.pushNamed(context, RouteName.menu, arguments: username);
     } else {
-      showSnackbar(context, "Login Gagal!", Colors.red);
+      showSnackbar(context, "Login Gagal! Kredential tidak valid", Colors.red);
     }
   }
 
@@ -41,6 +45,9 @@ class AuthController {
     UserModel user = UserModel(username: username, password: password);
     await _dbHelper.registerUser(user);
     showSnackbar(context, "Register Berhasil!", Colors.green);
+    usernameController.clear();
+    passwordController.clear();
+    
   }
 
   void showSnackbar(BuildContext context, String message, Color color) {

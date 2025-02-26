@@ -9,7 +9,8 @@ class HitungKarakterPage extends StatefulWidget {
 
 class _HitungKarakterPageState extends State<HitungKarakterPage> {
   bool isPressed = false;
-  final HitungKarakterController hitungKarakterController = HitungKarakterController();
+  final HitungKarakterController hitungKarakterController =
+      HitungKarakterController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +49,10 @@ class _HitungKarakterPageState extends State<HitungKarakterPage> {
             SizedBox(height: 32.0),
             TextButton(
               onPressed: () {
-                setState(() { 
-                    isPressed = true;
-                    hitungKarakterController.checkKarakter(hitungKarakterController.hitungKarakterC.text);
+                setState(() {
+                  isPressed = true;
+                  hitungKarakterController.checkKarakter(
+                      hitungKarakterController.hitungKarakterC.text);
                 });
               },
               style: TextButton.styleFrom(
@@ -60,7 +62,7 @@ class _HitungKarakterPageState extends State<HitungKarakterPage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-               child: Text(
+              child: Text(
                 'Cek Jumlah Karakter',
                 style: TextStyle(
                   fontSize: 18.0,
@@ -71,7 +73,7 @@ class _HitungKarakterPageState extends State<HitungKarakterPage> {
             ),
             const SizedBox(height: 32),
             if (isPressed)
-              if(hitungKarakterController.hitungKarakterC.text.isEmpty)
+              if (hitungKarakterController.hitungKarakterC.text.isEmpty)
                 Text(
                   'Masukkan karakter terlebih dahulu',
                   style: TextStyle(
@@ -81,14 +83,28 @@ class _HitungKarakterPageState extends State<HitungKarakterPage> {
                   ),
                 )
               else
-              Text(
-                hitungKarakterController.hasil,
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.65,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Panjang karakter: ${hitungKarakterController.hasil}',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
           ],
         ),
       ),

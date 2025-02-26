@@ -1,0 +1,2 @@
+K:/Coding/Mobile Project/Flutter/Mobile Sem 6/tugas_1/android/app/.cxx/RelWithDebInfo/1ief2956/x86_64/CMakeFiles/edit_cache.dir
+K:/Coding/Mobile Project/Flutter/Mobile Sem 6/tugas_1/android/app/.cxx/RelWithDebInfo/1ief2956/x86_64/CMakeFiles/rebuild_cache.dir

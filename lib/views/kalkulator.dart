@@ -16,15 +16,14 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
   void checkOperator(int index) {
     setState(() {
       // isPressed = [false, false, false, false];
-        // isPressed[index] = !isPressed[index];
+      // isPressed[index] = !isPressed[index];
       // if(!isPressed[index]){
       // }
 
-      if(!isPressed[index]){
+      if (!isPressed[index]) {
         isPressed = [false, false, false, false];
         isPressed[index] = true;
-      }
-      else{
+      } else {
         isPressed[index] = false;
       }
     });
@@ -187,14 +186,49 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                 fontWeight: FontWeight.bold,
               ),
             )
-          else
+          else if (!isPressed.contains(true))
             Text(
-              'Hasil: $hasil',
+              'Pilih operator terlebih dahulu',
               style: TextStyle(
                 fontSize: 18.0,
-                color: Colors.black,
+                color: Colors.red,
                 fontWeight: FontWeight.bold,
               ),
+            )
+          else
+            Column(
+              children: [
+                Text(
+                  'Hasil',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.65,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      hasil.toString(),
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             )
         ]),
       ),

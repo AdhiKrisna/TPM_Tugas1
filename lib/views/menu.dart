@@ -5,8 +5,7 @@ class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
   @override
   Widget build(BuildContext context) {
-    String username =
-        ModalRoute.of(context)!.settings.arguments as String? ?? 'Guest';
+    String username =  ModalRoute.of(context)!.settings.arguments as String? ?? 'Guest';
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +30,7 @@ class MenuPage extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  actions: <Widget>[
+                  actions: [
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).pop(false);
@@ -61,12 +60,11 @@ class MenuPage extends StatelessWidget {
               },
             );
             if (confirmLogout == true) {
-              // Perform logout action
-              Navigator.pushNamedAndRemoveUntil(
+              Navigator.pushReplacementNamed(
                 context,
                 RouteName.login,
-                (Route<dynamic> route) => false,
               );
+              showSnackbar(context, 'Logout Berhasil', Colors.green);
             }
           },
         ),
@@ -85,7 +83,7 @@ class MenuPage extends StatelessWidget {
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.of(context).size.width * 0.65,
               height: 75,
               padding: const EdgeInsets.all(10),
               child: TextButton(
@@ -96,9 +94,15 @@ class MenuPage extends StatelessWidget {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.blue,
                 ),
-                child: const Text(
-                  'Biodata Kelompok',
-                  style: TextStyle(fontSize: 20),
+                child: Row(
+                  spacing: 15,
+                  children: [
+                    Icon(Icons.person, size: 24,color: Colors.white),
+                    const Text(
+                      'Biodata Kelompok',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
                 ),
                 onPressed: () =>
                     Navigator.pushNamed(context, RouteName.biodata),
@@ -106,7 +110,7 @@ class MenuPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Container(
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.of(context).size.width * 0.65,
               height: 75,
               padding: const EdgeInsets.all(10),
               child: TextButton(
@@ -117,9 +121,15 @@ class MenuPage extends StatelessWidget {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.blue,
                 ),
-                child: const Text(
-                  'Kalkulator',
-                  style: TextStyle(fontSize: 20),
+                child: Row(
+                  spacing: 15,
+                  children: [
+                    Icon(Icons.calculate, size: 24,color: Colors.white),
+                    const Text(
+                      'Kalkulator',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
                 ),
                 onPressed: () => Navigator.pushNamed(
                   context,
@@ -129,7 +139,7 @@ class MenuPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Container(
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.of(context).size.width * 0.65,
               height: 75,
               padding: const EdgeInsets.all(10),
               child: TextButton(
@@ -140,9 +150,15 @@ class MenuPage extends StatelessWidget {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.blue,
                 ),
-                child: const Text(
-                  'Ganjil Genap',
-                  style: TextStyle(fontSize: 20),
+                child: Row(
+                  spacing: 15,
+                  children: [
+                    Icon(Icons.calculate, size: 24,color: Colors.white),
+                    const Text(
+                      'Ganjil Genap',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
                 ),
                 onPressed: () => Navigator.pushNamed(
                   context,
@@ -152,7 +168,7 @@ class MenuPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Container(
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.of(context).size.width * 0.65,
               height: 75,
               padding: const EdgeInsets.all(10),
               child: TextButton(
@@ -163,9 +179,15 @@ class MenuPage extends StatelessWidget {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.blue,
                 ),
-                child: const Text(
-                  'Hitung Karakter',
-                  style: TextStyle(fontSize: 20),
+                child: Row(
+                  spacing: 15,
+                  children: [
+                    Icon(Icons.calculate, size: 24,color: Colors.white),
+                    const Text(
+                      'Hitung Karakter',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
                 ),
                 onPressed: () => Navigator.pushNamed(
                   context,
@@ -179,3 +201,13 @@ class MenuPage extends StatelessWidget {
     );
   }
 }
+
+
+ void showSnackbar(BuildContext context, String message, Color color) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: color,
+      ),
+    );
+  }
