@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_1/controllers/auth_controller.dart';
+import 'package:tugas_1/views/widgets/text_field_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,73 +21,17 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              keyboardType: TextInputType.text,
+            TextFieldWidget(
               controller: authC.usernameController,
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.blue,
-                prefixIcon: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: 'Username',
-                hintStyle: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              hintText: 'Username',
+              prefixIcon: Icons.person,
             ),
             const SizedBox(height: 32.0),
-            TextField(
-              obscureText: isHide ? true : false,
-              keyboardType: TextInputType.text,
+            TextFieldWidget(
               controller: authC.passwordController,
-              
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Colors.white,
-                ),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isHide = !isHide;
-                    });
-                  },
-                  icon: Icon(
-                    isHide ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.white,
-                  ),
-                ),
-                filled: true,
-                fillColor: Colors.blue,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: 'Password',
-                hintStyle: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              hintText: 'Password',
+              prefixIcon: Icons.lock,
+              isPass: true,
             ),
             const SizedBox(height: 32.0),
             Row(
