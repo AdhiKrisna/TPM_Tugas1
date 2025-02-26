@@ -2,7 +2,6 @@ class UserModel {
   int?id;
   String username;
   String password;
-
   UserModel({this.id, required this.username, required this.password});
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
