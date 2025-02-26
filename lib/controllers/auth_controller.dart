@@ -20,7 +20,7 @@ class AuthController {
     username = usernameController.text;
     if (user != null) {
       showSnackbar(context, "Login Berhasil! Selamat Datang $username", Colors.green);
-      Navigator.pushNamed(context, RouteName.menu, arguments: username);
+      Navigator.pushReplacementNamed(context, RouteName.menu, arguments: username);
     } else {
       showSnackbar(context, "Login Gagal! Kredential tidak valid", Colors.red);
     }
