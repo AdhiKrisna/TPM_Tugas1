@@ -24,7 +24,7 @@ class _HitungKarakterPageState extends State<HitungKarakterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              keyboardType: TextInputType.text,
+              keyboardType: TextInputType.number,
               controller: hitungKarakterController.hitungKarakterC,
               style: TextStyle(
                 fontSize: 18.0,
